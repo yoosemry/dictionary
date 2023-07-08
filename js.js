@@ -4,15 +4,29 @@ const dis = document.querySelector('.displays')
 
 let findWords;
 dis.innerHTML = ''
-const getMemories = ()=>{
-    let mem = localStorage.getItem('memories');
-    return mem ? JSON.parse(mem) : [""];
+
+const fetchData = async (searchText)=>{
+
+    const response = await fetch("/word.json");
+    const data = await response.json();
+    findWords = data.find((word) => word.word == searchText);
+    return findWords;
+  
 }
-const memories = (str)=>{
+
+
+
+const getMemories = ()=>{
+    return localStorage.getItem('memories') ?  JSON.parse(localStorage.getItem('memories')) : [];
+}
+const memories = async ()=>{
    const getMem = getMemories();
-        console.log(getMem)
-        
-    
+  const wordsFetch = await fetchData(search.value);
+ 
+  console.log(getMem)
+
+  localStorage.setItem('memories', JSON.stringify(upd))
+      
 }
 const displayFun = async(string,parts)=>{
     
@@ -51,7 +65,7 @@ const displayFun = async(string,parts)=>{
         </ul>
 
         <div class="learned">
-            <input type="checkbox" name="learned" id="learned" onclick="memories(findWords)"> Learning
+            <input type="checkbox" name="learned" id="learned" onclick="memories()"> Learning
         </div>
     </div>
 </div>
