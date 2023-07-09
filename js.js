@@ -14,13 +14,14 @@ const fetchData = async (searchText) => {
 
 const getMemories =  () => {
   let memo = localStorage.getItem("memories");
-  return memo ? JSON.parse(memo) : [];
+  return memo ? JSON.parse(memo): [];
 };
 
-const memories = (memo) => {
+const memories = async (memos) => {
   const getMem =  getMemories();
-
-  getMem.push(memo);
+  const myFet =  await fetchData();
+  
+  getMem.push(memos);
 
   localStorage.setItem("memories", JSON.stringify(getMem));
   search.value = "";
@@ -28,6 +29,8 @@ const memories = (memo) => {
 };
 const displayFun = async (string, parts) => {
   const allinfo = `
+
+
     <div class="display">
 
    

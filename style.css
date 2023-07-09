@@ -130,3 +130,9 @@ ul.lists li {
   margin-left: -3rem;
   color: rgb(113, 233, 113);
 }
+
+.courner{
+  border: 1px solid #eee;
+  padding: 5rem;
+  margin-top: 2rem;
+}
