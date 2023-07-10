@@ -85,7 +85,7 @@ body {
   font-size: 1.8rem;
 }
 
-.displays {
+.displays , .dis{
   margin-top: 5rem;
   grid-column: col-str 2 / col-end 7;
 }
